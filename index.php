@@ -69,10 +69,28 @@
     </nav>
     <div id="main">
         <div id="content">
+            <?php
+                // go => subpagepath
+                //TODO Finish Mapping
+                $navs = [
+                    "admin_login" => "adminLogin/adminLogin.php"
+                ];
 
+                if(!key_exists("go", $_GET)){
+                    //include "start\\start.html";
+                }
+                else{
+                    if(!key_exists($_GET["go"], $navs)){
+                        //include "start\\start.html";
+                    }
+                    else{
+                        include $navs[$_GET["go"]];
+                    }
+                }
+            ?>
         </div>
         <div id="events">
-            
+
         </div>
     </div>
     <footer>
