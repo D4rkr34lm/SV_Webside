@@ -1,6 +1,4 @@
 <?php 
-    session_start();
-
     require "dbAccess.php";
 
     $max_articles_per_side = 10;

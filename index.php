@@ -1,8 +1,11 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Schachverein Herzogenrath</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="events\\events.css">
+
     <!--TODO  Replace with less detailed Icon-->
     <link rel="icon" type="image/png" href="Burg.gif">
 </head>
@@ -25,7 +28,7 @@
         </address>
     </header>
     <nav>
-        <a>News</a>
+        <a href="index.php?go=news">News</a>
         <a>Kontakt</a>
         <a>Wegbeschreibung</a>
         <a>DWZ-Liste</a>
@@ -73,7 +76,8 @@
                 // go => subpagepath
                 //TODO Finish Mapping
                 $navs = [
-                    "admin_login" => "adminLogin/adminLogin.php"
+                    "admin_login" => "adminLogin/adminLogin.php",
+                    "news" => "news/news.php"
                 ];
 
                 if(!key_exists("go", $_GET)){
@@ -90,7 +94,10 @@
             ?>
         </div>
         <div id="events">
-
+            <?php
+                require "events\\events.functions.php";
+                renderEvents(10);
+            ?>
         </div>
     </div>
     <footer>

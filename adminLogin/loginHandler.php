@@ -1,5 +1,4 @@
 <?php 
-    session_start();
     require "../dbAccess.php";
 
     $input_username = $_POST["username"];
