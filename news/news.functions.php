@@ -1,7 +1,17 @@
 <?php 
     session_start();
 
-    require "settings.php";
+    require "dbAccess.php";
+
+    $max_articles_per_side = 10;
+    $article_template = "
+    <article class='article_container'>
+        <h3 class='article_header'>#1</h3>
+        <div class='article_content'>#2</div>
+        <p class='article_metadata'>Geschrieben von <a href='mailto:#4'>#3</a> am #5 um #6 <a href='index.php?go=news&id=#0' class='single_view_link'>Einzelansicht &raquo</a></p>
+    </article>"; 
+    $max_direct_navigation_links = 3; 
+    $target_side = "index.php";
 
     function display_side($side_index){
         global $db_host, $db_username, $db_pw, $db_name, $max_articles_per_side;
@@ -44,7 +54,7 @@
 
         echo construct_navigation_bar($side_index, $side_count);
 
-        if(array_key_exists("admin_login_status", $_SESSION) && $_SESSION["admin_login_status"]){
+        if(array_key_exists("admin_login", $_SESSION) && $_SESSION["admin_login"]){
             echo "<a href='index.php?go=news_editor&id=new' id='new_link'>Neuen Artikel hinzufügen</a>";
         }
 
@@ -65,7 +75,7 @@
         echo construct_article($article_data, "single"); 
         echo "<a href='index.php?go=news' id='single_article_back_link'>&laquo Zurück zu den News </a>";
 
-        if(array_key_exists("admin_login_status", $_SESSION) && $_SESSION["admin_login_status"]){
+        if(array_key_exists("admin_login", $_SESSION) && $_SESSION["admin_login"]){
             $edit_link = "<a href='index.php?go=news_editor&id=" . strval($id) . "' id='edit_link'>Bearbeiten</a>";
             echo $edit_link;
         }
