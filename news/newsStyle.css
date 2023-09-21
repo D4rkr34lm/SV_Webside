@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+}
+
+article{
+    background-color: white;
+    border: 2px solid rgb(220, 220, 220);
+    margin-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.article_header{
+    background-color: rgb(230, 230, 230);
+    padding: 4px;
+}
+
+.single_view_link{
+    float: right;
+    text-decoration: none;
+}
+
+#navigation_bar_container{
+    text-align: center;
+}
+
+#single_article_back_link{
+    text-decoration: none;
+}
+
+#edit_link{
+    text-decoration: none;
+    float: right;
+}
+
+#new_link{
+    text-decoration: none;
+}
+    
